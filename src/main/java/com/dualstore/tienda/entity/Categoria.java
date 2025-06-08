@@ -4,6 +4,8 @@ package com.dualstore.tienda.entity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ import jakarta.persistence.Table;
  * Implementa borrado lógico mediante el campo {@code estado}.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "categoria")
 @SQLDelete(sql = "UPDATE categorias SET estado = 0 WHERE idcategoria = ?")
 @Where(clause = "estado = 1")

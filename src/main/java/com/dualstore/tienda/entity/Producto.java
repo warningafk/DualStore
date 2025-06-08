@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,6 +21,7 @@ import jakarta.persistence.Table;
  * Entidad que mapea la tabla “productos” con borrado lógico vía estado.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "producto")
 @SQLDelete(sql = "UPDATE productos SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
@@ -54,10 +57,12 @@ public class Producto {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Categoria categoria;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unidad_medida_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private UnidadMedida unidadMedida;
 
     /** 1 = activo, 0 = eliminado lógicamente */

@@ -3,6 +3,8 @@ package com.dualstore.tienda.entity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ import jakarta.persistence.Table;
  * Entidad que representa la tabla “roles” con borrado lógico vía estado.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "rol")
 @SQLDelete(sql = "UPDATE roles SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")

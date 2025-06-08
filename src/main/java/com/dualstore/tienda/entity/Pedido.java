@@ -5,12 +5,15 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 /**
  * Entidad que mapea la tabla “pedidos” con borrado lógico vía el campo estado.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "pedido")
 @SQLDelete(sql = "UPDATE pedidos SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
@@ -25,6 +28,7 @@ public class Pedido {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Usuario usuario;
 
     @Column(name = "fecha", nullable = false, columnDefinition = "DATETIME")

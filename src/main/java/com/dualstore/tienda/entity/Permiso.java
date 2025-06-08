@@ -3,6 +3,8 @@ package com.dualstore.tienda.entity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,11 +31,13 @@ public class Permiso {
     /** Relación con Rol */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rol_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Rol rol;
 
     /** Relación con Módulo */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "modulo_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Modulo modulo;
 
     /** Permisos específicos */
