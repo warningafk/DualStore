@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "rol")
-@SQLDelete(sql = "UPDATE roles SET estado = 0 WHERE id = ?")
+@SQLDelete(sql = "UPDATE rol SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class Rol {
 

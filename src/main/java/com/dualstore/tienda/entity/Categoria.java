@@ -14,13 +14,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
- * Entidad que representa la tabla “categorias”.
+ * Entidad que representa la tabla “”.
  * Implementa borrado lógico mediante el campo {@code estado}.
  */
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "categoria")
-@SQLDelete(sql = "UPDATE categorias SET estado = 0 WHERE idcategoria = ?")
+@SQLDelete(sql = "UPDATE categoria SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class Categoria {
 
@@ -44,7 +44,7 @@ public class Categoria {
 
     public Categoria() {}
 
-    /** Útil para relaciones (FK) donde solo se necesita el ID */
+    /* Útil para relaciones (FK) donde solo se necesita el ID */
     public Categoria(Integer id) {
         this.idcategoria = id;
     }
