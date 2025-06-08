@@ -40,7 +40,7 @@ public class Usuario {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rol_id")
-    private Roles rol;
+    private Rol rol;
 
     /** 1 = activo, 0 = eliminado lógicamente */
     private Integer estado = 1;
@@ -91,10 +91,10 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public Roles getRol() {
+    public Rol getRol() {
         return rol;
     }
-    public void setRol(Roles rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
