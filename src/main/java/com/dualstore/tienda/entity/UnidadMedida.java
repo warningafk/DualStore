@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
  * Entidad que representa la tabla “unidades_medida” con borrado lógico vía estado.
  */
 @Entity
-@Table(name = "unidades_medida")
+@Table(name = "unidad_medida")
 @SQLDelete(sql = "UPDATE unidades_medida SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class UnidadMedida {
