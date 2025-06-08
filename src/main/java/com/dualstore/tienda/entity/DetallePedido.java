@@ -11,7 +11,7 @@ import jakarta.persistence.*;
  * Entidad que mapea la tabla “detalle_pedidos” con borrado lógico vía el campo estado.
  */
 @Entity
-@Table(name = "detalle_pedidos")
+@Table(name = "detalle_pedido")
 @SQLDelete(sql = "UPDATE detalle_pedidos SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class DetallePedido {

@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
  * Entidad que representa la tabla “permisos” con borrado lógico vía estado.
  */
 @Entity
-@Table(name = "permisos")
+@Table(name = "permiso")
 @SQLDelete(sql = "UPDATE permisos SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class Permiso {

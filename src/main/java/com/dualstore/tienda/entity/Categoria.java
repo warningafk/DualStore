@@ -16,13 +16,14 @@ import jakarta.persistence.Table;
  * Implementa borrado lógico mediante el campo {@code estado}.
  */
 @Entity
-@Table(name = "categorias")
+@Table(name = "categoria")
 @SQLDelete(sql = "UPDATE categorias SET estado = 0 WHERE idcategoria = ?")
 @Where(clause = "estado = 1")
 public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer idcategoria;
 
     @Column(length = 20, nullable = false, unique = true)

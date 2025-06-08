@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
  * Entidad que representa la tabla “roles” con borrado lógico vía estado.
  */
 @Entity
-@Table(name = "roles")
+@Table(name = "rol")
 @SQLDelete(sql = "UPDATE roles SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class Rol {

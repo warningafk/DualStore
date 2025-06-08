@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
  * Entidad que representa la tabla “modulos” con borrado lógico vía estado.
  */
 @Entity
-@Table(name = "modulos")
+@Table(name = "modulo")
 @SQLDelete(sql = "UPDATE modulos SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class Modulo {

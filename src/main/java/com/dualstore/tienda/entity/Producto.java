@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
  * Entidad que mapea la tabla “productos” con borrado lógico vía estado.
  */
 @Entity
-@Table(name = "productos")
+@Table(name = "producto")
 @SQLDelete(sql = "UPDATE productos SET estado = 0 WHERE id = ?")
 @Where(clause = "estado = 1")
 public class Producto {
