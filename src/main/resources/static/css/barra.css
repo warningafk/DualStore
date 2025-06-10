@@ -1,0 +1,177 @@
+/* barra.css */
+/* Variables de color */
+:root {
+  --bg-barra: #23272f;
+  --texto: #ffffff;
+  --hover-bg: rgba(255,255,255,0.1);
+  --active-bg: rgba(255,255,255,0.2);
+}
+
+/* Reset de sombras y bordes */
+.barra-lateral,
+.logo-admin,
+.logo-img,
+.admin-user,
+.menu-item > a {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Contenedor principal */
+.barra-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  background: var(--bg-barra);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  color: var(--texto);
+  transition: width 0.2s ease;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo-admin {
+  background: transparent;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+.logo-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+.brand {
+  font-family: 'Krub', sans-serif;
+  font-size: 1.2rem;
+  color: var(--texto);
+  letter-spacing: 1.5px;
+}
+.panel-text {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Navegación */
+.navegacion {
+  flex: 1;
+}
+.main-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu-item {
+  margin: 0;
+}
+.menu-item > a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: var(--texto);
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.menu-item > a:hover {
+  background: var(--hover-bg);
+}
+.menu-item.active > a {
+  background: var(--active-bg);
+}
+.menu-item ion-icon {
+  margin-right: 0.75rem;
+  font-size: 1.3rem;
+  color: var(--texto);
+}
+
+/* Separador */
+.linea {
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 1.5rem 0;
+}
+
+/* Sección usuario */
+.admin-user {
+  background: transparent;
+  padding: 1rem 1rem;
+}
+.usuario {
+  display: flex;
+  align-items: center;
+}
+.user-img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+.info-usuario {
+  display: flex;
+  flex-direction: column;
+}
+.nombre {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+.email {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+}
+.icon-more {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: var(--texto);
+}
+
+/* Botón hamburguesa (mobile) */
+.menu {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-barra);
+  color: var(--texto);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Overlay móvil */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1050;
+}
+.sidebar-overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .barra-lateral { width: 70px; }
+  .logo-admin span,
+  .main-nav span,
+  .info-usuario { display: none; }
+  .logo-admin { padding: 1rem 0; }
+  .menu { display: flex; }
+}
+@media (min-width: 992px) {
+  .barra-lateral.mini-barra-lateral { width: 80px; }
+}

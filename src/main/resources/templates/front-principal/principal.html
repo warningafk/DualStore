@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DualStore | Tienda de Ropa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/principal.css">
+</head>
+<body>
+    <!-- Navbar principal -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-barra shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 brand" href="#">DualStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#masvendidos">Más Vendidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contáctanos</a></li>
+                    <li class="nav-item">
+                        <div id="userDropdownContainer" style="display:none;" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fw-bold text-warning" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                                <span id="userName">Usuario</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item text-danger" href="/logout">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                        <a id="loginBtn" class="nav-link btn btn-outline-light ms-2 px-3" href="/login" style="border-radius: 20px; font-weight: 600; display:none;">
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                </ul>   
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-3 text-white">Viste tu mejor versión con <span class="brand">DualStore</span></h1>
+            <p class="lead mb-4 text-white-50">Moda, calidad y comodidad para todos los estilos. Descubre lo más vendido y las mejores categorías.</p>
+            <a href="#masvendidos" class="btn btn-lg btn-hero shadow">Ver Más Vendidos</a>
+        </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="/img/dualstore.png" alt="DualStore" class="img-fluid rounded-3 shadow-sm" style="max-width: 320px;">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="fw-bold mb-3 brand">Sobre DualStore</h2>
+                    <p class="lead">Somos una tienda de ropa peruana dedicada a ofrecerte lo mejor en moda urbana y casual. Nuestro compromiso es brindarte prendas de calidad, con diseños modernos y precios accesibles.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><span class="text-barra fw-bold">✓</span> Envíos a todo el Perú</li>
+                        <li class="mb-2"><span class="text-barra fw-bold">✓</span> Atención personalizada</li>
+                        <li class="mb-2"><span class="text-barra fw-bold">✓</span> Novedades cada semana</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section id="categorias" class="py-5 bg-categorias">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 brand">Categorías</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card categoria-card text-center shadow-sm h-100">
+                        <img src="/img/categoria1.jpg" class="card-img-top mx-auto mt-3" alt="Hombres" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2">Hombres</h5>
+                            <p class="card-text">Camisas, polos, jeans y más.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card categoria-card text-center shadow-sm h-100">
+                        <img src="/img/categoria2.jpg" class="card-img-top mx-auto mt-3" alt="Mujeres" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2">Mujeres</h5>
+                            <p class="card-text">Blusas, vestidos, pantalones y más.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card categoria-card text-center shadow-sm h-100">
+                        <img src="/img/categoria3.jpg" class="card-img-top mx-auto mt-3" alt="Niños" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2">Zapatillas</h5>
+                            <p class="card-text">Ropa cómoda y divertida.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card categoria-card text-center shadow-sm h-100">
+                        <img src="/img/categoria4.jpg" class="card-img-top mx-auto mt-3" alt="Accesorios" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2">Accesorios</h5>
+                            <p class="card-text">Gorros, mochilas y más.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Más Vendidos -->
+    <section id="masvendidos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 brand">Productos Más Vendidos</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="/img/producto1.jpg" class="card-img-top" alt="Producto 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Camisa Casual</h5>
+                            <p class="card-text">Estilo y frescura para tu día a día.</p>
+                            <span class="badge bg-barra">S/ 79.90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="/img/producto2.jpg" class="card-img-top" alt="Producto 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Polo Básico</h5>
+                            <p class="card-text">Comodidad y calidad en cada prenda.</p>
+                            <span class="badge bg-barra">S/ 49.90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="/img/producto3.jpg" class="card-img-top" alt="Producto 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Jeans Slim</h5>
+                            <p class="card-text">Ajuste perfecto y máxima durabilidad.</p>
+                            <span class="badge bg-barra">S/ 119.90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="/img/producto4.jpg" class="card-img-top" alt="Producto 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Casaca Urbana</h5>
+                            <p class="card-text">Protección y estilo para cualquier clima.</p>
+                            <span class="badge bg-barra">S/ 159.90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 brand">Blog</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card blog-card h-100 shadow-sm">
+                        <img src="/img/blog1.jpg" class="card-img-top" alt="Blog 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Tendencias 2025</h5>
+                            <p class="card-text">Descubre las prendas que marcarán la moda este año.</p>
+                            <a href="#" class="btn btn-link text-barra">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card blog-card h-100 shadow-sm">
+                        <img src="/img/blog2.jpg" class="card-img-top" alt="Blog 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Cómo combinar tus prendas</h5>
+                            <p class="card-text">Tips para lograr outfits únicos y con estilo propio.</p>
+                            <a href="#" class="btn btn-link text-barra">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card blog-card h-100 shadow-sm">
+                        <img src="/img/blog3.jpg" class="card-img-top" alt="Blog 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Cuidado de tus prendas</h5>
+                            <p class="card-text">Recomendaciones para mantener tu ropa como nueva.</p>
+                            <a href="#" class="btn btn-link text-barra">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact-section py-5 bg-categorias">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow border-0 p-4">
+                        <h3 class="fw-bold mb-3 text-center brand">Contáctanos</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-barra btn-lg">Enviar Mensaje</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-barra text-white py-4 mt-5">
+        <div class="container text-center">
+            <span>&copy; 2025 DualStore. Todos los derechos reservados.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Lógica JS para mostrar/ocultar según sesión
+    window.addEventListener('DOMContentLoaded', function() {
+        fetch('/api/usuario-actual', { credentials: 'same-origin' })
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+                if (data && data.nombreCompleto && data.nombreCompleto.trim() !== "") {
+                    document.getElementById('userDropdownContainer').style.display = 'block';
+                    document.getElementById('userName').textContent = data.nombreCompleto;
+                    document.getElementById('loginBtn').style.display = 'none';
+                } else {
+                    document.getElementById('userDropdownContainer').style.display = 'none';
+                    document.getElementById('loginBtn').style.display = 'block';
+                }
+            })
+            .catch(() => {
+                document.getElementById('userDropdownContainer').style.display = 'none';
+                document.getElementById('loginBtn').style.display = 'block';
+            });
+    });
+    </script>
+</body>
+</html>

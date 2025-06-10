@@ -1,0 +1,101 @@
+/* Dashboard DualStore - dasboard.css */
+
+body {
+    background: #f6f8fa;
+    font-family: 'Outfit', 'Lato', Arial, sans-serif;
+}
+
+.dashboard-main {
+    margin-left: 240px;
+    min-height: 100vh;
+    background: #f6f8fa;
+    padding-bottom: 40px;
+}
+
+.welcome-card {
+    background: linear-gradient(90deg, #3a86ff 0%, #8338ec 100%);
+    color: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(58,134,255,0.10);
+}
+
+.summary-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #3a86ff11;
+}
+.summary-card h5 {
+    color: #3a86ff;
+    font-weight: 700;
+}
+.summary-icon {
+    font-size: 1.3rem;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.summary-icon.productos { color: #3a86ff; }
+.summary-icon.categorias { color: #8338ec; }
+.summary-icon.usuarios { color: #ffd60a; }
+.summary-label {
+    font-weight: 500;
+    color: #23272f;
+    margin-right: 4px;
+}
+.summary-value {
+    font-weight: 700;
+    color: #3a86ff;
+}
+
+.card-metric {
+    border: none;
+    border-radius: 18px;
+    background: #fff;
+    transition: box-shadow 0.18s;
+}
+.card-metric:hover {
+    box-shadow: 0 8px 32px rgba(58,134,255,0.13);
+    transform: translateY(-2px) scale(1.01);
+}
+.metric-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 12px;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px #3a86ff22;
+}
+
+.card {
+    border-radius: 18px !important;
+    border: none;
+}
+
+.top-productos-list .list-group-item {
+    background: #f8fafc;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #23272f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.top-productos-list .badge {
+    background: linear-gradient(90deg, #3a86ff 0%, #8338ec 100%);
+    color: #fff;
+    font-size: 0.98rem;
+    border-radius: 12px;
+    padding: 0.5em 1.2em;
+}
+
+@media (max-width: 900px) {
+    .dashboard-main {
+        margin-left: 0;
+        padding: 0 8px;
+    }
+}

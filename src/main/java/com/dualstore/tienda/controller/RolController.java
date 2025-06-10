@@ -3,21 +3,26 @@ package com.dualstore.tienda.controller;
 import com.dualstore.tienda.entity.Rol;
 import com.dualstore.tienda.service.IRolService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/dualstore")
+@Controller
+@RequestMapping("/roles")
 public class RolController {
 
     @Autowired
     private IRolService rolService;
 
-    @GetMapping("/roles")
-    public List<Rol> buscarTodos() {
-        return rolService.buscarTodos();
+
+    @GetMapping("")
+    public String listarRoles(Model model) {
+        List<Rol> roles = rolService.buscarTodos();
+        model.addAttribute("roles", roles);
+        return "rol/index";
     }
 
     @PostMapping("/roles")

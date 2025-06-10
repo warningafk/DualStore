@@ -3,21 +3,26 @@ package com.dualstore.tienda.controller;
 import com.dualstore.tienda.entity.Categoria;
 import com.dualstore.tienda.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/dualstore")
+@Controller
+@RequestMapping("/categorias")
 public class CategoriaController {
 
     @Autowired
     private ICategoriaService categoriaService;
 
-    @GetMapping("/categorias")
-    public List<Categoria> buscarTodos() {
-        return categoriaService.buscarTodos();
+
+    @GetMapping("")
+    public String listarCategorias(Model model) {
+        List<Categoria> categorias = categoriaService.buscarTodos();
+        model.addAttribute("categorias", categorias);
+        return "categoria/index";
     }
 
     @PostMapping("/categorias")

@@ -3,21 +3,25 @@ package com.dualstore.tienda.controller;
 import com.dualstore.tienda.entity.Producto;
 import com.dualstore.tienda.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/dualstore")
+@Controller
+@RequestMapping("/productos")
 public class ProductoController {
 
     @Autowired
     private IProductoService productoService;
 
-    @GetMapping("/productos")
-    public List<Producto> buscarTodos() {
-        return productoService.buscarTodos();
+    @GetMapping("")
+    public String listarProductos(Model model) {
+        List<Producto> productos = productoService.buscarTodos();
+        model.addAttribute("productos", productos);
+        return "producto/index";
     }
 
     @PostMapping("/productos")

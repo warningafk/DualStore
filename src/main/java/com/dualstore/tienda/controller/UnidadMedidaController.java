@@ -3,21 +3,26 @@ package com.dualstore.tienda.controller;
 import com.dualstore.tienda.entity.UnidadMedida;
 import com.dualstore.tienda.service.IUnidadMedidaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/dualstore")
+@Controller
+@RequestMapping("/unidadmedida")
 public class UnidadMedidaController {
 
     @Autowired
     private IUnidadMedidaService unidadMedidaService;
 
-    @GetMapping("/unidadesmedida")
-    public List<UnidadMedida> buscarTodos() {
-        return unidadMedidaService.buscarTodos();
+
+    @GetMapping("")
+    public String listarUnidades(Model model) {
+        List<UnidadMedida> unidades = unidadMedidaService.buscarTodos();
+        model.addAttribute("unidades", unidades);
+        return "unidadmedida/index";
     }
 
     @PostMapping("/unidadesmedida")

@@ -1,0 +1,144 @@
+body {
+    background: #f6f8fa;
+    font-family: 'Outfit', 'Lato', Arial, sans-serif;
+}
+
+.bg-barra {
+    background: #23272f !important;
+    background: linear-gradient(90deg, #23272f 0%, #3a86ff 100%) !important;
+}
+.text-barra {
+    color: #3a86ff !important;
+}
+.brand {
+    color: #3a86ff;
+    letter-spacing: 2px;
+}
+
+.navbar {
+    border-bottom: 2px solid #3a86ff22;
+}
+.navbar .nav-link.active, .navbar .nav-link:hover {
+    color: #ffd60a !important;
+}
+
+.hero-section {
+    min-height: 60vh;
+    background: linear-gradient(120deg, #23272f 0%, #3a86ff 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0 40px 0;
+}
+.btn-hero {
+    background: #3a86ff;
+    color: #fff;
+    border-radius: 24px;
+    font-weight: 600;
+    padding: 0.7em 2.2em;
+    border: none;
+    transition: background 0.18s;
+}
+.btn-hero:hover {
+    background: #23272f;
+    color: #ffd60a;
+}
+
+.bg-categorias {
+    background: linear-gradient(90deg, #f6f8fa 0%, #e5e9f7 100%);
+}
+
+.categoria-card {
+    border-radius: 18px;
+    border: none;
+    background: #fff;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.categoria-card:hover {
+    box-shadow: 0 8px 32px #3a86ff22;
+    transform: translateY(-2px) scale(1.01);
+    border: 1.5px solid #3a86ff;
+}
+
+.product-card {
+    border-radius: 18px;
+    border: none;
+    background: #fff;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.product-card:hover {
+    box-shadow: 0 8px 32px #3a86ff22;
+    transform: translateY(-2px) scale(1.01);
+    border: 1.5px solid #3a86ff;
+}
+.product-card .badge {
+    background: #23272f;
+    background: linear-gradient(90deg, #23272f 0%, #3a86ff 100%);
+    color: #fff;
+    font-size: 1.01rem;
+    border-radius: 12px;
+    padding: 0.5em 1.2em;
+}
+
+.blog-card {
+    border-radius: 18px;
+    border: none;
+    background: #fff;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.blog-card:hover {
+    box-shadow: 0 8px 32px #3a86ff22;
+    transform: translateY(-2px) scale(1.01);
+    border: 1.5px solid #3a86ff;
+}
+.blog-card .btn-link {
+    color: #3a86ff;
+    font-weight: 600;
+    text-decoration: underline;
+    padding-left: 0;
+}
+.blog-card .btn-link:hover {
+    color: #23272f;
+}
+
+.contact-section .card {
+    border-radius: 18px;
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 24px #3a86ff11;
+}
+.btn-barra {
+    background: #3a86ff;
+    color: #fff;
+    border-radius: 24px;
+    font-weight: 600;
+    padding: 0.7em 2.2em;
+    border: none;
+    transition: background 0.18s;
+}
+.btn-barra:hover {
+    background: #23272f;
+    color: #ffd60a;
+}
+
+.footer {
+    background: #23272f;
+    color: #fff;
+    border-top: 2px solid #3a86ff22;
+}
+
+@media (max-width: 900px) {
+    .hero-section {
+        padding: 40px 0 20px 0;
+    }
+    .brand {
+        font-size: 1.3rem;
+    }
+    h1.display-3 {
+        font-size: 2.1rem;
+    }
+    .categoria-card, .product-card, .blog-card {
+        border-radius: 12px;
+    }
+}
