@@ -55,16 +55,31 @@
           </a>
         </li>
       </ul>
-    </nav>
-
-    <!-- Usuario -->
+    </nav>    <!-- Usuario -->
     <div class="admin-user mt-auto mb-4 px-3">
       <div class="linea"></div>
-      <div class="usuario d-flex align-items-center">
+      
+      <!-- Dropdown del usuario -->
+      <div class="user-dropdown" id="userDropdown">
+        <a href="#" class="dropdown-item" onclick="showUserInfo()">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          <span>Perfil</span>
+        </a>
+        <a href="#" class="dropdown-item" onclick="showSettings()">
+          <ion-icon name="settings-outline"></ion-icon>
+          <span>Configuración</span>
+        </a>        <form action="/admin/logout" method="post" style="margin: 0;" onsubmit="return confirmLogout()">
+          <button type="submit" class="dropdown-item logout" style="width: 100%; border: none; background: none; text-align: left;">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Cerrar Sesión</span>
+          </button>
+        </form>
+      </div>
+      
+      <div class="usuario" id="userToggle">
         <img th:src="@{/img/dualstore.png}" alt="Usuario" class="user-img me-2">
         <div class="info-usuario">
-          <span class="nombre">Admin DualStore</span>
-          <span class="email">admin@dualstore.com</span>
+          <span class="nombre">AdminDualStore</span>
         </div>
         <ion-icon name="ellipsis-vertical-outline" class="icon-more"></ion-icon>
       </div>

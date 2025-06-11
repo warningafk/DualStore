@@ -100,10 +100,18 @@
 .admin-user {
   background: transparent;
   padding: 1rem 1rem;
+  position: relative;
 }
 .usuario {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.usuario:hover {
+  background: var(--hover-bg);
 }
 .user-img {
   width: 36px;
@@ -129,6 +137,57 @@
   margin-left: auto;
   font-size: 1.2rem;
   color: var(--texto);
+  transition: transform 0.3s ease;
+}
+.usuario.active .icon-more {
+  transform: rotate(90deg);
+}
+
+/* Dropdown del usuario */
+.user-dropdown {
+  position: absolute;
+  bottom: 100%;
+  left: 1rem;
+  right: 1rem;
+  background: #2a2e37;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  margin-bottom: 0.5rem;
+}
+.user-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.user-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: var(--texto);
+  text-decoration: none;
+  transition: background 0.3s ease;
+  border-radius: 6px;
+  margin: 0.25rem 0.5rem;
+}
+.user-dropdown .dropdown-item:hover {
+  background: var(--hover-bg);
+}
+.user-dropdown .dropdown-item ion-icon {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
+}
+.user-dropdown .dropdown-item.logout {
+  color: #ff6b6b;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 0.5rem;
+}
+.user-dropdown .dropdown-item.logout:hover {
+  background: rgba(255, 107, 107, 0.1);
 }
 
 /* Botón hamburguesa (mobile) */
@@ -163,6 +222,17 @@
   opacity: 1;
 }
 
+/* Barra lateral móvil */
+@media (max-width: 900px) {
+  .barra-lateral {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease, width 0.3s ease;
+  }
+  .barra-lateral.show {
+    transform: translateX(0);
+  }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .barra-lateral { width: 70px; }
@@ -171,6 +241,28 @@
   .info-usuario { display: none; }
   .logo-admin { padding: 1rem 0; }
   .menu { display: flex; }
+  
+  /* Dropdown en móvil */
+  .user-dropdown {
+    left: -120px;
+    right: auto;
+    width: 200px;
+  }
+  
+  /* Mostrar barra completa en móvil cuando está activa */
+  .barra-lateral.show {
+    width: 240px;
+  }
+  .barra-lateral.show .logo-admin span,
+  .barra-lateral.show .main-nav span,
+  .barra-lateral.show .info-usuario {
+    display: block;
+  }
+  .barra-lateral.show .user-dropdown {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+  }
 }
 @media (min-width: 992px) {
   .barra-lateral.mini-barra-lateral { width: 80px; }
