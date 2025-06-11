@@ -11,12 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/admin/categorias")
+@RequestMapping("/admin/categoria")
 public class CategoriaController {
 
     @Autowired
     private ICategoriaService categoriaService;
-
 
     @GetMapping("")
     public String listarCategorias(Model model) {
@@ -25,26 +24,44 @@ public class CategoriaController {
         return "categoria/index";
     }
 
-    @PostMapping("/categorias")
-    public Categoria guardar(@RequestBody Categoria categoria) {
+    @GetMapping("/form")
+    public String mostrarFormulario(Model model) {
+        model.addAttribute("categoria", new Categoria());
+        return "categoria/form";
+    }    @PostMapping("/save")
+    public String guardarCategoria(@ModelAttribute("categoria") Categoria categoria) {
         categoriaService.guardar(categoria);
-        return categoria;
+        return "redirect:/admin/categoria";
     }
 
-    @PutMapping("/categorias")
-    public Categoria modificar(@RequestBody Categoria categoria) {
+    @GetMapping("/edit/{id}")
+    public String mostrarFormularioEdicion(@PathVariable("id") Integer id, Model model) {
+        Optional<Categoria> categoria = categoriaService.buscarId(id);
+        if (categoria.isPresent()) {
+            model.addAttribute("categoria", categoria.get());
+            return "categoria/update";
+        }
+        return "redirect:/admin/categoria";
+    }
+
+    @PostMapping("/update/{id}")
+    public String actualizarCategoria(@PathVariable("id") Integer id, @ModelAttribute("categoria") Categoria categoria) {
+        categoria.setIdcategoria(id);
         categoriaService.modificar(categoria);
-        return categoria;
+        return "redirect:/admin/categoria";
     }
 
-    @GetMapping("/categorias/{id}")
-    public Optional<Categoria> buscarId(@PathVariable("id") Integer id) {
-        return categoriaService.buscarId(id);
-    }
-
-    @DeleteMapping("/categorias/{id}")
-    public String eliminar(@PathVariable Integer id) {
+    @GetMapping("/view/{id}")
+    public String verCategoria(@PathVariable("id") Integer id, Model model) {
+        Optional<Categoria> categoria = categoriaService.buscarId(id);
+        if (categoria.isPresent()) {
+            model.addAttribute("categoria", categoria.get());
+            return "categoria/view";
+        }
+        return "redirect:/admin/categoria";
+    }    @GetMapping("/delete/{id}")
+    public String eliminarCategoria(@PathVariable("id") Integer id) {
         categoriaService.eliminar(id);
-        return "Categoría eliminada";
+        return "redirect:/admin/categoria";
     }
 }

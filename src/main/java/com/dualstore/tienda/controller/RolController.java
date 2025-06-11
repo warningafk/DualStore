@@ -23,28 +23,48 @@ public class RolController {
         List<Rol> roles = rolService.buscarTodos();
         model.addAttribute("roles", roles);
         return "rol/index";
+    }    @GetMapping("/form")
+    public String mostrarFormulario(Model model) {
+        model.addAttribute("rol", new Rol());
+        return "rol/form";
     }
 
-    @PostMapping("/roles")
-    public Rol guardar(@RequestBody Rol rol) {
+    @PostMapping("/save")
+    public String guardar(Rol rol) {
         rolService.guardar(rol);
-        return rol;
+        return "redirect:/admin/roles";
     }
 
-    @PutMapping("/roles")
-    public Rol modificar(@RequestBody Rol rol) {
+    @GetMapping("/edit/{id}")
+    public String mostrarFormularioEdicion(@PathVariable("id") Integer id, Model model) {
+        Optional<Rol> rol = rolService.buscarId(id);
+        if (rol.isPresent()) {
+            model.addAttribute("rol", rol.get());
+            return "rol/update";
+        }
+        return "redirect:/admin/roles";
+    }
+
+    @PostMapping("/update/{id}")
+    public String actualizar(@PathVariable("id") Integer id, Rol rol) {
+        rol.setId(id);
         rolService.modificar(rol);
-        return rol;
+        return "redirect:/admin/roles";
     }
 
-    @GetMapping("/roles/{id}")
-    public Optional<Rol> buscarId(@PathVariable("id") Integer id) {
-        return rolService.buscarId(id);
+    @GetMapping("/view/{id}")
+    public String ver(@PathVariable("id") Integer id, Model model) {
+        Optional<Rol> rol = rolService.buscarId(id);
+        if (rol.isPresent()) {
+            model.addAttribute("rol", rol.get());
+            return "rol/view";
+        }
+        return "redirect:/admin/roles";
     }
 
-    @DeleteMapping("/roles/{id}")
-    public String eliminar(@PathVariable Integer id) {
+    @GetMapping("/delete/{id}")
+    public String eliminar(@PathVariable("id") Integer id) {
         rolService.eliminar(id);
-        return "Rol eliminado";
+        return "redirect:/admin/roles";
     }
 }

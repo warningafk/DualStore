@@ -10,12 +10,12 @@
 </head>
 <body>
 
-    <div th:replace="~{fragments/barra :: barra('producto')}"></div>
+    <div th:replace="~{fragments/barra :: barra('categorias')}"></div>
 
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="fw-bold mb-0">Categorías</h1>
-            <a href="/categorias/form" class="btn btn-primary">Nueva Categoría</a>
+            <a th:href="@{/admin/categoria/form}" class="btn btn-primary">Nueva Categoría</a>
         </div>
         <div class="table-responsive rounded shadow-sm">
             <table class="table table-hover align-middle mb-0 bg-white">
@@ -35,9 +35,9 @@
                         <td th:text="${categoria.nombre}"></td>
                         <td th:text="${categoria.descripcion}"></td>
                         <td class="text-center">
-                            <a th:href="@{'/categorias/' + ${categoria.idcategoria}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
-                            <a th:href="@{'/categorias/update/' + ${categoria.idcategoria}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
-                            <a th:href="@{'/categorias/delete/' + ${categoria.idcategoria}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
+                            <a th:href="@{'/admin/categoria/view/' + ${categoria.idcategoria}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
+                            <a th:href="@{'/admin/categoria/edit/' + ${categoria.idcategoria}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
+                            <a th:href="@{'/admin/categoria/delete/' + ${categoria.idcategoria}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>

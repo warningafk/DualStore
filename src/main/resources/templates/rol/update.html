@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Rol | DualStore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div th:replace="~{fragments/barra :: barra('roles')}"></div>
+    
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="mb-0">
+                            <i class="bi bi-pencil-square me-2"></i>Editar Rol
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{'/admin/roles/update/' + ${rol.id}}" th:object="${rol}" method="post">
+                            <div class="mb-3">
+                                <label for="id" class="form-label">
+                                    <i class="bi bi-hash me-1"></i>ID
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="id" 
+                                    th:field="*{id}" 
+                                    readonly
+                                >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">
+                                    <i class="bi bi-person-badge me-1"></i>Nombre del Rol
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="nombre" 
+                                    th:field="*{nombre}" 
+                                    placeholder="Ingrese el nombre del rol"
+                                    required
+                                >
+                                <div class="form-text">
+                                    Ejemplo: Administrador, Vendedor, Supervisor
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="estado" class="form-label">
+                                    <i class="bi bi-toggle-on me-1"></i>Estado
+                                </label>
+                                <select class="form-select" id="estado" th:field="*{estado}" required>
+                                    <option value="">Seleccione el estado</option>
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a th:href="@{/admin/roles}" class="btn btn-secondary me-md-2">
+                                    <i class="bi bi-arrow-left me-1"></i>Cancelar
+                                </a>
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="bi bi-pencil-square me-1"></i>Actualizar Rol
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

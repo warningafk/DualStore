@@ -12,7 +12,7 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="fw-bold mb-0">Usuarios</h1>
-            <a href="/usuarios/form" class="btn btn-primary">Nuevo Usuario</a>
+            <a href="/admin/usuarios/form" class="btn btn-primary">Nuevo Usuario</a>
         </div>
         <div class="table-responsive rounded shadow-sm">
             <table class="table table-hover align-middle mb-0 bg-white">
@@ -30,11 +30,10 @@
                         <td th:text="${usuario.id}"></td>
                         <td th:text="${usuario.nombreCompleto}"></td>
                         <td th:text="${usuario.correo}"></td>
-                        <td th:text="${usuario.rol != null ? usuario.rol.nombre : ''}"></td>
-                        <td class="text-center">
-                            <a th:href="@{'/usuarios/' + ${usuario.id}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
-                            <a th:href="@{'/usuarios/update/' + ${usuario.id}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
-                            <a th:href="@{'/usuarios/delete/' + ${usuario.id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
+                        <td th:text="${usuario.rol != null ? usuario.rol.nombre : ''}"></td>                        <td class="text-center">
+                            <a th:href="@{'/admin/usuarios/view/' + ${usuario.id}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
+                            <a th:href="@{'/admin/usuarios/edit/' + ${usuario.id}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
+                            <a th:href="@{'/admin/usuarios/delete/' + ${usuario.id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>

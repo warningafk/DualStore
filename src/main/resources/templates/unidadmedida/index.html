@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="fw-bold mb-0">Unidades de Medida</h1>
-            <a href="/unidadmedida/form" class="btn btn-primary">Nueva Unidad</a>
+            <a th:href="@{/admin/unidadmedida/form}" class="btn btn-primary">Nueva Unidad</a>
         </div>
         <div class="table-responsive rounded shadow-sm">
             <table class="table table-hover align-middle mb-0 bg-white">
@@ -30,9 +30,9 @@
                         <td th:text="${unidad.codigo}"></td>
                         <td th:text="${unidad.descripcion}"></td>
                         <td class="text-center">
-                            <a th:href="@{'/unidadmedida/' + ${unidad.id}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
-                            <a th:href="@{'/unidadmedida/update/' + ${unidad.id}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
-                            <a th:href="@{'/unidadmedida/delete/' + ${unidad.id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
+                            <a th:href="@{'/admin/unidadmedida/view/' + ${unidad.id}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
+                            <a th:href="@{'/admin/unidadmedida/edit/' + ${unidad.id}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
+                            <a th:href="@{'/admin/unidadmedida/delete/' + ${unidad.id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>

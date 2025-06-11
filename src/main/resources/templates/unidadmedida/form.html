@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Categoría</title>
+    <title>Registrar Unidad de Medida</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <div th:replace="~{fragments/barra :: barra('categorias')}"></div>
+    <div th:replace="~{fragments/barra :: barra('unidadmedida')}"></div>
 
     <div class="container py-4">
-        <h2 class="mb-4">Registrar Categoría</h2>
-        <form th:action="@{/admin/categoria/save}" th:object="${categoria}" method="post" class="row g-3">
+        <h2 class="mb-4">Registrar Unidad de Medida</h2>
+        <form th:action="@{/admin/unidadmedida/save}" th:object="${unidadMedida}" method="post" class="row g-3">
             <!-- Campo para errores generales -->
             <div th:if="${#fields.hasGlobalErrors()}" class="col-12">
                 <div class="alert alert-danger">
@@ -24,25 +24,19 @@
 
             <div class="col-md-6">
                 <label for="codigo" class="form-label">Código</label>
-                <input type="text" id="codigo" th:field="*{codigo}" class="form-control" placeholder="Ej: CAT001" required maxlength="20">
+                <input type="text" id="codigo" th:field="*{codigo}" class="form-control" placeholder="Ej: KG, M, LT" required maxlength="10">
                 <small th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" class="form-text text-danger"></small>
             </div>
 
             <div class="col-md-6">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" placeholder="Ej: Electrónicos" required maxlength="100">
-                <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="form-text text-danger"></small>
-            </div>
-
-            <div class="col-md-12">
                 <label for="descripcion" class="form-label">Descripción</label>
-                <textarea id="descripcion" th:field="*{descripcion}" class="form-control" rows="3" placeholder="Breve descripción de la categoría"></textarea>
+                <input type="text" id="descripcion" th:field="*{descripcion}" class="form-control" placeholder="Ej: Kilogramos, Metros, Litros" required maxlength="50">
                 <small th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}" class="form-text text-danger"></small>
             </div>
 
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Guardar</button>
-                <a th:href="@{/admin/categoria}" class="btn btn-secondary">Cancelar</a>
+                <a th:href="@{/admin/unidadmedida}" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>

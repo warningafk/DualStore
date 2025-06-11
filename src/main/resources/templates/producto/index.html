@@ -11,10 +11,9 @@
 
     <div th:replace="~{fragments/barra :: barra('producto')}"></div>
     
-    <div class="container py-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="container py-4">        <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="fw-bold mb-0">Productos</h1>
-            <a href="/productos/form" class="btn btn-primary">Nuevo Producto</a>
+            <a th:href="@{/admin/productos/form}" class="btn btn-primary">Nuevo Producto</a>
         </div>
         <div class="table-responsive rounded shadow-sm">
             <table class="table table-hover align-middle mb-0 bg-white">
@@ -44,11 +43,10 @@
                         <td th:text="${producto.precioVenta}"></td>
                         <td th:text="${producto.stock}"></td>
                         <td th:text="${producto.categoria != null ? producto.categoria.nombre : ''}"></td>
-                        <td th:text="${producto.unidadMedida != null ? producto.unidadMedida.descripcion : ''}"></td>
-                        <td class="text-center">
-                            <a th:href="@{'/productos/' + ${producto.id}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
-                            <a th:href="@{'/productos/update/' + ${producto.id}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
-                            <a th:href="@{'/productos/delete/' + ${producto.id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
+                        <td th:text="${producto.unidadMedida != null ? producto.unidadMedida.descripcion : ''}"></td>                        <td class="text-center">
+                            <a th:href="@{'/admin/productos/view/' + ${producto.id}}" class="btn btn-outline-info btn-sm me-1">Ver</a>
+                            <a th:href="@{'/admin/productos/edit/' + ${producto.id}}" class="btn btn-outline-warning btn-sm me-1">Editar</a>
+                            <a th:href="@{'/admin/productos/delete/' + ${producto.id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro de eliminar?')">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
