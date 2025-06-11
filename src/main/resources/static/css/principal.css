@@ -1,144 +1,245 @@
 body {
-    background: #f6f8fa;
+    background: #f4f4f4;
     font-family: 'Outfit', 'Lato', Arial, sans-serif;
+    color: #212529;
 }
 
 .bg-barra {
-    background: #23272f !important;
-    background: linear-gradient(90deg, #23272f 0%, #3a86ff 100%) !important;
+    background: #121212 !important;
 }
+
 .text-barra {
-    color: #3a86ff !important;
+    color: #ffffff !important;
 }
+
 .brand {
-    color: #3a86ff;
+    color: #ffffff;
     letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Clase brand para fondos oscuros (navbar, hero) */
+.brand-light {
+    color: #ffffff !important;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Clase brand para fondos claros */
+.brand-dark {
+    color: #1e1e1e !important;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .navbar {
-    border-bottom: 2px solid #3a86ff22;
+    border-bottom: 1px solid #2c2c2c;
 }
-.navbar .nav-link.active, .navbar .nav-link:hover {
-    color: #ffd60a !important;
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .hero-section {
-    min-height: 60vh;
-    background: linear-gradient(120deg, #23272f 0%, #3a86ff 100%);
+    min-height: 70vh;
+    background: linear-gradient(to bottom right, #1c1c1c, #2e2e2e);
     color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 60px 0 40px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
+
+.hero-section h1 span {
+    color: #f5f5f5;
+}
+
 .btn-hero {
-    background: #3a86ff;
-    color: #fff;
-    border-radius: 24px;
+    background: #ffffff;
+    color: #1e1e1e;
+    border-radius: 30px;
     font-weight: 600;
-    padding: 0.7em 2.2em;
+    padding: 0.8em 2.4em;
     border: none;
-    transition: background 0.18s;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
 .btn-hero:hover {
-    background: #23272f;
-    color: #ffd60a;
+    background: #333333;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .bg-categorias {
-    background: linear-gradient(90deg, #f6f8fa 0%, #e5e9f7 100%);
+    background: #f9f9f9;
 }
 
-.categoria-card {
-    border-radius: 18px;
-    border: none;
-    background: #fff;
-    transition: box-shadow 0.18s, transform 0.18s;
-}
-.categoria-card:hover {
-    box-shadow: 0 8px 32px #3a86ff22;
-    transform: translateY(-2px) scale(1.01);
-    border: 1.5px solid #3a86ff;
+.categoria-card,
+.product-card,
+.blog-card {
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.product-card {
-    border-radius: 18px;
-    border: none;
-    background: #fff;
-    transition: box-shadow 0.18s, transform 0.18s;
+.categoria-card:hover,
+.product-card:hover,
+.blog-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
 }
-.product-card:hover {
-    box-shadow: 0 8px 32px #3a86ff22;
-    transform: translateY(-2px) scale(1.01);
-    border: 1.5px solid #3a86ff;
-}
+
 .product-card .badge {
-    background: #23272f;
-    background: linear-gradient(90deg, #23272f 0%, #3a86ff 100%);
-    color: #fff;
-    font-size: 1.01rem;
+    background: #1e1e1e;
+    color: #ffffff;
+    font-size: 0.95rem;
     border-radius: 12px;
     padding: 0.5em 1.2em;
 }
 
-.blog-card {
-    border-radius: 18px;
-    border: none;
-    background: #fff;
-    transition: box-shadow 0.18s, transform 0.18s;
-}
-.blog-card:hover {
-    box-shadow: 0 8px 32px #3a86ff22;
-    transform: translateY(-2px) scale(1.01);
-    border: 1.5px solid #3a86ff;
-}
 .blog-card .btn-link {
-    color: #3a86ff;
+    color: #1e1e1e;
     font-weight: 600;
     text-decoration: underline;
     padding-left: 0;
+    transition: color 0.2s;
 }
+
 .blog-card .btn-link:hover {
-    color: #23272f;
+    color: #444444;
 }
 
 .contact-section .card {
-    border-radius: 18px;
+    border-radius: 20px;
     border: none;
-    background: #fff;
-    box-shadow: 0 4px 24px #3a86ff11;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
+
 .btn-barra {
-    background: #3a86ff;
-    color: #fff;
-    border-radius: 24px;
+    background: #1e1e1e;
+    color: #ffffff;
+    border-radius: 30px;
     font-weight: 600;
-    padding: 0.7em 2.2em;
+    padding: 0.8em 2.2em;
     border: none;
-    transition: background 0.18s;
+    transition: background 0.2s ease;
 }
+
 .btn-barra:hover {
-    background: #23272f;
-    color: #ffd60a;
+    background: #333;
+    color: #fff;
 }
 
 .footer {
-    background: #23272f;
-    color: #fff;
-    border-top: 2px solid #3a86ff22;
+    background: #121212;
+    color: #ffffff;
+    border-top: 1px solid #2c2c2c;
+}
+
+.footer span {
+    font-size: 0.95rem;
+    color: #cccccc;
+}
+
+/* Clases de texto para mejorar visibilidad */
+.text-dark {
+    color: #212529 !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+/* Asegurar que los títulos sean visibles */
+.card-title {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.card-text {
+    color: #6c757d !important;
+}
+
+/* Mejorar contraste en categorías */
+.categoria-card .card-title {
+    color: #1e1e1e !important;
+    font-weight: 700;
+}
+
+.categoria-card .card-text {
+    color: #666666 !important;
+}
+
+/* Asegurar que los productos sean visibles */
+.product-card .card-title {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.product-card .card-text {
+    color: #6c757d !important;
+}
+
+/* Blog cards */
+.blog-card .card-title {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.blog-card .card-text {
+    color: #6c757d !important;
+}
+
+/* Encabezados de sección */
+h1, h2, h3, h4, h5, h6 {
+    color: #1e1e1e !important;
+}
+
+/* Encabezados específicos para secciones */
+.section-title {
+    color: #1e1e1e !important;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* Para textos en la sección "Nosotros" */
+.about-text {
+    color: #212529 !important;
+}
+
+.about-list-item {
+    color: #212529 !important;
 }
 
 @media (max-width: 900px) {
     .hero-section {
         padding: 40px 0 20px 0;
+        text-align: center;
     }
+
     .brand {
         font-size: 1.3rem;
     }
+
     h1.display-3 {
-        font-size: 2.1rem;
+        font-size: 2.2rem;
     }
-    .categoria-card, .product-card, .blog-card {
+
+    .categoria-card,
+    .product-card,
+    .blog-card {
         border-radius: 12px;
+    }
+
+    .btn-hero {
+        padding: 0.7em 1.8em;
+        font-size: 1rem;
     }
 }
