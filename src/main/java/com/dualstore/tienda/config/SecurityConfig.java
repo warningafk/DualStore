@@ -19,7 +19,9 @@ public class SecurityConfig {
         return http
             .securityMatcher("/admin/**", "/dashboard", "/productos/**", "/categorias/**", "/unidadmedida/**", "/usuarios/**", "/roles/**", "/css/**", "/js/**", "/img/**", "/fragments/**")            .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/admin/login", "/admin/css/**", "/admin/js/**", "/admin/img/**", "/css/**", "/js/**", "/img/**", "/fragments/**").permitAll()
-                .anyRequest().hasRole("ADMIN")
+                // Se admite tanto ADMIN como ADMINISTRADOR para evitar errores
+                // cuando el nombre del rol en la base de datos difiere
+                .anyRequest().hasAnyRole("ADMIN", "ADMINISTRADOR")
             )
             .formLogin(form -> form
                 .loginPage("/admin/login")
