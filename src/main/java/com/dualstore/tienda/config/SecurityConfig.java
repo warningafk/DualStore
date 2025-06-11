@@ -43,9 +43,9 @@ public class SecurityConfig {
     @org.springframework.core.annotation.Order(2)
     public SecurityFilterChain principalSecurity(HttpSecurity http) throws Exception {
         return http
-            .securityMatcher("/login", "/principal/**", "/front-principal/**", "/", "/css/**", "/img/**", "/js/**", "/registro")
+            .securityMatcher("/login", "/principal/**", "/front-principal/**", "/", "/css/**", "/img/**", "/js/**", "/registro", "/api/**")
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/css/**", "/img/**", "/js/**", "/registro", "/", "/principal", "/front-principal/**").permitAll()
+                .requestMatchers("/css/**", "/img/**", "/js/**", "/registro", "/", "/principal", "/front-principal/**", "/api/usuario-actual").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
