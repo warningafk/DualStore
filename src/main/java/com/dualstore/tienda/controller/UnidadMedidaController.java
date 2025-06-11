@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/unidadmedida")
+@RequestMapping("/admin/unidadmedida")
 public class UnidadMedidaController {
 
     @Autowired

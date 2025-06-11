@@ -20,39 +20,37 @@
 
     <!-- Navegación -->
     <nav class="navegacion">
-      <ul class="main-nav">
-        <li class="menu-item" th:classappend="${activePage == 'dashboard'} ? ' active'">
-          <a th:href="@{/dashboard}">
+      <ul class="main-nav">        <li class="menu-item" th:classappend="${activePage == 'dashboard'} ? ' active'">
+          <a th:href="@{/admin/dashboard}">
             <ion-icon name="grid-outline"></ion-icon>
             <span>Dashboard</span>
           </a>
         </li>
         <li class="menu-item" th:classappend="${activePage == 'productos'} ? ' active'">
-          <a th:href="@{/productos}">
+          <a th:href="@{/admin/productos}">
             <ion-icon name="shirt-outline"></ion-icon>
             <span>Productos</span>
           </a>
         </li>
         <li class="menu-item" th:classappend="${activePage == 'categorias'} ? ' active'">
-          <a th:href="@{/categorias}">
+          <a th:href="@{/admin/categorias}">
             <ion-icon name="pricetags-outline"></ion-icon>
             <span>Categorías</span>
           </a>
         </li>
         <li class="menu-item" th:classappend="${activePage == 'unidadmedida'} ? ' active'">
-          <a th:href="@{/unidadmedida}">
+          <a th:href="@{/admin/unidadmedida}">
             <ion-icon name="cube-outline"></ion-icon>
             <span>Unidades de Medida</span>
           </a>
         </li>
         <li class="menu-item" th:classappend="${activePage == 'usuarios'} ? ' active'">
-          <a th:href="@{/usuarios}">
+          <a th:href="@{/admin/usuarios}">
             <ion-icon name="person-outline"></ion-icon>
             <span>Usuarios</span>
           </a>
-        </li>
-        <li class="menu-item" th:classappend="${activePage == 'roles'} ? ' active'">
-          <a th:href="@{/roles}">
+        </li>        <li class="menu-item" th:classappend="${activePage == 'roles'} ? ' active'">
+          <a th:href="@{/admin/roles}">
             <ion-icon name="key-outline"></ion-icon>
             <span>Roles</span>
           </a>

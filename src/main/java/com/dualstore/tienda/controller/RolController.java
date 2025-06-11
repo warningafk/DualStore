@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/roles")
+@RequestMapping("/admin/roles")
 public class RolController {
 
     @Autowired

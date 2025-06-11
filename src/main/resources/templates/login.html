@@ -14,11 +14,12 @@
                 <img src="/img/dualstore.png" alt="DualStore Logo" class="mb-2" style="width: 60px;">
                 <h2 class="fw-bold mb-0 brand">DualStore</h2>
                 <span class="text-muted">Inicia sesión en tu cuenta</span>
-            </div>
-            <div th:if="${param.error}" class="alert alert-danger" role="alert">
+            </div>            <div th:if="${param.error}" class="alert alert-danger" role="alert">
                 Usuario o contraseña incorrectos.
             </div>
-            <form id="loginForm" autocomplete="off" method="post" action="/login">
+            <div th:if="${message}" class="alert alert-warning" role="alert" th:text="${message}">
+            </div>
+            <form id="loginForm" autocomplete="off" method="post" action="/clienteLoginProcess">
                 <div class="mb-3">
                     <label for="username" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control" id="username" name="username" required autofocus>

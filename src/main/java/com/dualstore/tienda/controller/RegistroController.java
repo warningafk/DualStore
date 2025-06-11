@@ -1,27 +1,20 @@
 package com.dualstore.tienda.controller;
 
-import com.dualstore.tienda.entity.Usuario;
-import com.dualstore.tienda.entity.Rol;
-import com.dualstore.tienda.service.IUsuarioService;
-import com.dualstore.tienda.service.IRolService;
+import com.dualstore.tienda.entity.Cliente;
+import com.dualstore.tienda.service.IClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class RegistroController {
 
     @Autowired
-    private IUsuarioService usuarioService;
-
-    @Autowired
-    private IRolService rolService;
+    private IClienteService clienteService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -32,30 +25,35 @@ public class RegistroController {
     }
 
     @PostMapping("/registro")
-    public String registrarUsuario(@RequestParam String nombreCompleto,
-                                   @RequestParam String correo,
-                                   @RequestParam String direccion,
-                                   @RequestParam String password,
-                                   Model model) {
-        // Verifica si el correo ya existe
-        List<Usuario> existentes = usuarioService.buscarTodos();
-        boolean existe = existentes.stream().anyMatch(u -> u.getCorreo().equalsIgnoreCase(correo));
-        if (existe) {
-            model.addAttribute("registroError", "El correo ya está registrado");
-            return "registro";
+    public String procesarRegistro(@RequestParam("nombreCompleto") String nombreCompleto,
+                                 @RequestParam("correo") String correo,
+                                 @RequestParam("contrasena") String contrasena,
+                                 @RequestParam("direccion") String direccion,
+                                 @RequestParam("telefono") String telefono,
+                                 RedirectAttributes redirectAttributes) {
+        try {
+            // Verificar si el correo ya existe
+            if (clienteService.existsByCorreo(correo)) {
+                redirectAttributes.addFlashAttribute("error", "El correo electrónico ya está registrado.");
+                return "redirect:/registro";
+            }
+
+            // Crear nuevo cliente
+            Cliente cliente = new Cliente();
+            cliente.setNombreCompleto(nombreCompleto);
+            cliente.setCorreo(correo);
+            cliente.setContrasena(passwordEncoder.encode(contrasena)); // Encriptar contraseña
+            cliente.setDireccion(direccion);
+            cliente.setTelefono(telefono);
+
+            // Guardar cliente
+            clienteService.save(cliente);
+
+            redirectAttributes.addFlashAttribute("success", "Registro exitoso. Ahora puedes iniciar sesión.");
+            return "redirect:/login";
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al procesar el registro. Inténtalo de nuevo.");            return "redirect:/registro";
         }
-        Usuario usuario = new Usuario();
-        usuario.setNombreCompleto(nombreCompleto);
-        usuario.setCorreo(correo);
-        usuario.setDireccion(direccion);
-        usuario.setContrasena(passwordEncoder.encode(password));
-        usuario.setEstado(1);
-        // Busca el rol cliente (debe existir en la BD)
-        Rol rolCliente = rolService.buscarTodos().stream()
-                .filter(r -> r.getNombre().equalsIgnoreCase("cliente"))
-                .findFirst().orElse(null);
-        usuario.setRol(rolCliente);
-        usuarioService.guardar(usuario);
-        return "redirect:/login";
     }
 }

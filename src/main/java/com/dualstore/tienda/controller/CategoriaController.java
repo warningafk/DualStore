@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/categorias")
+@RequestMapping("/admin/categorias")
 public class CategoriaController {
 
     @Autowired

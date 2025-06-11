@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("/admin/usuarios")
 public class UsuarioController {
 
     @Autowired
