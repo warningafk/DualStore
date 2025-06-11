@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +9,35 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/principal.css">
 </head>
+
 <body>
     <!-- Navbar principal -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-barra shadow-sm py-3">
         <div class="container">
             <a class="navbar-brand fw-bold fs-3 brand" href="#">DualStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center w-100">
                     <li class="nav-item flex-grow-1 d-flex justify-content-center">
                         <form class="d-flex w-75" role="search">
-                            <input class="form-control form-control-sm rounded-pill px-3 shadow-sm border-0 w-100" type="search" placeholder="Buscar..." aria-label="Buscar" style="background: #f8f9fa; min-width: 140px;">
+                            <input class="form-control form-control-sm rounded-pill px-3 shadow-sm border-0 w-100"
+                                type="search" placeholder="Buscar..." aria-label="Buscar"
+                                style="background: #f8f9fa; min-width: 140px;">
                         </form>
                     </li>
                     <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contáctanos</a></li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle fw-bold text-warning" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle fw-bold text-warning" href="#" id="userDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle"></i>
                                 <span th:text="${nombreUsuario}">Usuario</span>
-                            </a>                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li th:if="${isAdmin}">
                                     <a class="dropdown-item text-primary" href="/admin/dashboard">
                                         <i class="bi bi-gear-fill me-2"></i>Panel de Administración
@@ -50,12 +57,14 @@
                         </div>
                     </li>
                     <li class="nav-item" sec:authorize="!isAuthenticated()">
-                        <a class="nav-link btn btn-outline-light ms-2 px-3" href="/login" style="border-radius: 20px; font-weight: 600;">
+                        <a class="nav-link btn btn-outline-light ms-2 px-3" href="/login"
+                            style="border-radius: 20px; font-weight: 600;">
                             Iniciar Sesión
                         </a>
                     </li>
                     <li class="nav-item d-flex align-items-center ms-2">
-                        <a class="nav-link position-relative p-2" href="#" id="cartBtn" style="display: flex; align-items: center;">
+                        <a class="nav-link position-relative p-2" href="#" id="cartBtn"
+                            style="display: flex; align-items: center;">
                             <i class="bi bi-cart3 fs-4"></i>
                         </a>
                     </li>
@@ -67,8 +76,10 @@
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center justify-content-center text-center">
         <div class="container">
-            <h1 class="display-3 fw-bold mb-3 text-white">Viste tu mejor versión con <span class="brand">DualStore</span></h1>
-            <p class="lead mb-4 text-white-50">Moda, calidad y comodidad para todos los estilos. Descubre lo más vendido y las mejores categorías.</p>
+            <h1 class="display-3 fw-bold mb-3 text-white">Viste tu mejor versión con <span
+                    class="brand">DualStore</span></h1>
+            <p class="lead mb-4 text-white-50">Moda, calidad y comodidad para todos los estilos. Descubre lo más vendido
+                y las mejores categorías.</p>
             <a href="#masvendidos" class="btn btn-lg btn-hero shadow">Ver Más Vendidos</a>
         </div>
     </section>
@@ -78,11 +89,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <img src="/img/dualstore.png" alt="DualStore" class="img-fluid rounded-3 shadow-sm" style="max-width: 320px;">
+                    <img src="/img/dualstore.png" alt="DualStore" class="img-fluid rounded-3 shadow-sm"
+                        style="max-width: 320px;">
                 </div>
                 <div class="col-md-6">
                     <h2 class="fw-bold mb-3 brand">Sobre DualStore</h2>
-                    <p class="lead">Somos una tienda de ropa peruana dedicada a ofrecerte lo mejor en moda urbana y casual. Nuestro compromiso es brindarte prendas de calidad, con diseños modernos y precios accesibles.</p>
+                    <p class="lead">Somos una tienda de ropa peruana dedicada a ofrecerte lo mejor en moda urbana y
+                        casual. Nuestro compromiso es brindarte prendas de calidad, con diseños modernos y precios
+                        accesibles.</p>
                     <ul class="list-unstyled mt-3">
                         <li class="mb-2"><span class="text-barra fw-bold">✓</span> Envíos a todo el Perú</li>
                         <li class="mb-2"><span class="text-barra fw-bold">✓</span> Atención personalizada</li>
@@ -91,95 +105,132 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Categorías -->
+    </section> <!-- Categorías -->
     <section id="categorias" class="py-5 bg-categorias">
         <div class="container">
             <h2 class="text-center fw-bold mb-5 brand">Categorías</h2>
             <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-4 col-lg-3">
+                <!-- Mostrar categorías dinámicamente desde la base de datos -->
+                <div class="col-6 col-md-4 col-lg-3" th:each="categoria : ${categorias}"
+                    th:if="${categoria.estado == 1}">
                     <div class="card categoria-card text-center shadow-sm h-100">
-                        <img src="/img/categoria1.jpg" class="card-img-top mx-auto mt-3" alt="Hombres" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title mb-2">Hombres</h5>
-                            <p class="card-text">Camisas, polos, jeans y más.</p>
+                        <div class="card-body d-flex flex-column justify-content-center py-4">
+                            <h3 class="card-title fw-bold mb-3 text-barra" th:text="${categoria.nombre}">Categoría</h3>
+                            <p class="card-text text-muted" th:text="${categoria.descripcion}">Descripción de la
+                                categoría</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card categoria-card text-center shadow-sm h-100">
-                        <img src="/img/categoria2.jpg" class="card-img-top mx-auto mt-3" alt="Mujeres" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title mb-2">Mujeres</h5>
-                            <p class="card-text">Blusas, vestidos, pantalones y más.</p>
+
+                <!-- Fallback: mostrar categorías estáticas si no hay categorías en BD -->
+                <div th:if="${#lists.isEmpty(categorias) or categorias == null}">
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card categoria-card text-center shadow-sm h-100">
+                            <div class="card-body d-flex flex-column justify-content-center py-4">
+                                <h3 class="card-title fw-bold mb-3 text-barra">Hombres</h3>
+                                <p class="card-text text-muted">Camisas, polos, jeans y más.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card categoria-card text-center shadow-sm h-100">
-                        <img src="/img/categoria3.jpg" class="card-img-top mx-auto mt-3" alt="Niños" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title mb-2">Zapatillas</h5>
-                            <p class="card-text">Ropa cómoda y divertida.</p>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card categoria-card text-center shadow-sm h-100">
+                            <div class="card-body d-flex flex-column justify-content-center py-4">
+                                <h3 class="card-title fw-bold mb-3 text-barra">Mujeres</h3>
+                                <p class="card-text text-muted">Blusas, vestidos, pantalones y más.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card categoria-card text-center shadow-sm h-100">
-                        <img src="/img/categoria4.jpg" class="card-img-top mx-auto mt-3" alt="Accesorios" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title mb-2">Accesorios</h5>
-                            <p class="card-text">Gorros, mochilas y más.</p>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card categoria-card text-center shadow-sm h-100">
+                            <div class="card-body d-flex flex-column justify-content-center py-4">
+                                <h3 class="card-title fw-bold mb-3 text-barra">Zapatillas</h3>
+                                <p class="card-text text-muted">Ropa cómoda y divertida.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card categoria-card text-center shadow-sm h-100">
+                            <div class="card-body d-flex flex-column justify-content-center py-4">
+                                <h3 class="card-title fw-bold mb-3 text-barra">Accesorios</h3>
+                                <p class="card-text text-muted">Gorros, mochilas y más.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Más Vendidos -->
+    </section><!-- Más Vendidos -->
     <section id="masvendidos" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center fw-bold mb-5 brand">Productos Más Vendidos</h2>
             <div class="row g-4 justify-content-center">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <!-- Mostrar productos dinámicamente desde la base de datos -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="producto, iterStat : ${productos}"
+                    th:if="${producto.estado == 1 and iterStat.count <= 8}">
                     <div class="card product-card h-100 shadow-sm">
-                        <img src="/img/producto1.jpg" class="card-img-top" alt="Producto 1">
+                        <!-- Mostrar imagen del producto si existe, sino mostrar imagen por defecto -->
+                        <img th:if="${producto.foto != null and !producto.foto.isEmpty()}" th:src="${producto.foto}"
+                            class="card-img-top" th:alt="${producto.nombre}" style="height: 200px; object-fit: cover;">
+                        <img th:if="${producto.foto == null or producto.foto.isEmpty()}" src="/img/producto1.jpg"
+                            class="card-img-top" th:alt="${producto.nombre}" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">Camisa Casual</h5>
-                            <p class="card-text">Estilo y frescura para tu día a día.</p>
-                            <span class="badge bg-barra">S/ 79.90</span>
+                            <h5 class="card-title" th:text="${producto.nombre}">Nombre del Producto</h5>
+                            <p class="card-text"
+                                th:text="${producto.descripcion != null ? producto.descripcion : 'Producto de calidad superior'}">
+                                Descripción del producto</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-barra"
+                                    th:text="'S/ ' + ${producto.precioVenta != null ? #numbers.formatDecimal(producto.precioVenta, 1, 2) : '0.00'}">S/
+                                    0.00</span>
+                                <small class="text-muted" th:if="${producto.stock != null and producto.stock > 0}"
+                                    th:text="'Stock: ' + ${producto.stock}">Stock: 0</small>
+                                <small class="text-danger"
+                                    th:if="${producto.stock == null or producto.stock <= 0}">Agotado</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card product-card h-100 shadow-sm">
-                        <img src="/img/producto2.jpg" class="card-img-top" alt="Producto 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Polo Básico</h5>
-                            <p class="card-text">Comodidad y calidad en cada prenda.</p>
-                            <span class="badge bg-barra">S/ 49.90</span>
+
+                <!-- Fallback: mostrar productos estáticos si no hay productos en BD -->
+                <div th:if="${#lists.isEmpty(productos) or productos == null}">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="/img/producto1.jpg" class="card-img-top" alt="Producto 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Camisa Casual</h5>
+                                <p class="card-text">Estilo y frescura para tu día a día.</p>
+                                <span class="badge bg-barra">S/ 79.90</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card product-card h-100 shadow-sm">
-                        <img src="/img/producto3.jpg" class="card-img-top" alt="Producto 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Jeans Slim</h5>
-                            <p class="card-text">Ajuste perfecto y máxima durabilidad.</p>
-                            <span class="badge bg-barra">S/ 119.90</span>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="/img/producto2.jpg" class="card-img-top" alt="Producto 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Polo Básico</h5>
+                                <p class="card-text">Comodidad y calidad en cada prenda.</p>
+                                <span class="badge bg-barra">S/ 49.90</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card product-card h-100 shadow-sm">
-                        <img src="/img/producto4.jpg" class="card-img-top" alt="Producto 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Casaca Urbana</h5>
-                            <p class="card-text">Protección y estilo para cualquier clima.</p>
-                            <span class="badge bg-barra">S/ 159.90</span>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="/img/producto3.jpg" class="card-img-top" alt="Producto 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Jeans Slim</h5>
+                                <p class="card-text">Ajuste perfecto y máxima durabilidad.</p>
+                                <span class="badge bg-barra">S/ 119.90</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="/img/producto4.jpg" class="card-img-top" alt="Producto 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Casaca Urbana</h5>
+                                <p class="card-text">Protección y estilo para cualquier clima.</p>
+                                <span class="badge bg-barra">S/ 159.90</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -262,4 +313,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

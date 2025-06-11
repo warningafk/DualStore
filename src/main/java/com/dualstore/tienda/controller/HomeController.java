@@ -8,8 +8,14 @@ import org.springframework.ui.Model;
 
 import com.dualstore.tienda.entity.Usuario;
 import com.dualstore.tienda.entity.Cliente;
+import com.dualstore.tienda.entity.Producto;
+import com.dualstore.tienda.entity.Categoria;
 import com.dualstore.tienda.repository.UsuarioRepository;
 import com.dualstore.tienda.repository.ClienteRepository;
+import com.dualstore.tienda.service.IProductoService;
+import com.dualstore.tienda.service.ICategoriaService;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -18,9 +24,22 @@ public class HomeController {
     private UsuarioRepository usuarioRepository;
     
     @Autowired
-    private ClienteRepository clienteRepository;    // RUTAS PARA CLIENTES
+    private ClienteRepository clienteRepository;
+    
+    @Autowired
+    private IProductoService productoService;
+    
+    @Autowired
+    private ICategoriaService categoriaService;    // RUTAS PARA CLIENTES
     @GetMapping({"/", "/principal"})
     public String mostrarPrincipal(Authentication authentication, Model model) {
+        // Cargar productos y categorías para mostrar en la vista principal
+        List<Producto> productos = productoService.buscarTodos();
+        List<Categoria> categorias = categoriaService.buscarTodos();
+        
+        model.addAttribute("productos", productos);
+        model.addAttribute("categorias", categorias);
+        
         if (authentication != null && authentication.isAuthenticated()) {
             // Verificar si es admin - Los admins NO pueden acceder a la vista principal
             boolean isAdmin = authentication.getAuthorities().stream()
