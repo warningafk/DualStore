@@ -17,9 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Override
+    private UsuarioRepository usuarioRepository;    @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findAll().stream()
@@ -28,6 +26,12 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
         Rol rol = usuario.getRol();
         String nombreRol = (rol != null) ? rol.getNombre() : "cliente";
+        
+        // Agregar el prefijo "ROLE_" si no lo tiene
+        if (!nombreRol.startsWith("ROLE_")) {
+            nombreRol = "ROLE_" + nombreRol.toUpperCase();
+        }
+        
         GrantedAuthority authority = new SimpleGrantedAuthority(nombreRol);
         // UserDetails personalizado para exponer el correo como username
         return new org.springframework.security.core.userdetails.User(

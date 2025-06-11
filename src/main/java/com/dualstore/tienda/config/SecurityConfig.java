@@ -12,17 +12,13 @@ public class SecurityConfig {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-
-    // Configuración exclusiva para el ADMINISTRABLE
+    }    // Configuración exclusiva para el ADMINISTRABLE
     @Bean
     @org.springframework.core.annotation.Order(1)
     public SecurityFilterChain adminSecurity(HttpSecurity http) throws Exception {
         return http
-            .securityMatcher("/admin/**")
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/admin/login", "/admin/css/**", "/admin/js/**", "/admin/img/**").permitAll()
+            .securityMatcher("/admin/**", "/dashboard", "/productos/**", "/categorias/**", "/unidadmedida/**", "/usuarios/**", "/roles/**", "/css/**", "/js/**", "/img/**", "/fragments/**")            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/admin/login", "/admin/css/**", "/admin/js/**", "/admin/img/**", "/css/**", "/js/**", "/img/**", "/fragments/**").permitAll()
                 .anyRequest().hasRole("ADMIN")
             )
             .formLogin(form -> form
@@ -36,16 +32,14 @@ public class SecurityConfig {
             )
             .csrf(csrf -> csrf.disable())
             .build();
-    }
-
-    // Configuración exclusiva para el PRINCIPAL (clientes)
+    }    // Configuración exclusiva para el PRINCIPAL (clientes)
     @Bean
     @org.springframework.core.annotation.Order(2)
     public SecurityFilterChain principalSecurity(HttpSecurity http) throws Exception {
         return http
-            .securityMatcher("/login", "/principal/**", "/front-principal/**", "/", "/css/**", "/img/**", "/js/**", "/registro", "/api/**")
+            .securityMatcher("/login", "/logout", "/principal/**", "/front-principal/**", "/", "/registro", "/api/**")
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/css/**", "/img/**", "/js/**", "/registro", "/", "/principal", "/front-principal/**", "/api/usuario-actual").permitAll()
+                .requestMatchers("/registro", "/", "/principal", "/front-principal/**", "/api/usuario-actual", "/logout").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -54,6 +48,7 @@ public class SecurityConfig {
                 .permitAll()
             )
             .logout(logout -> logout
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/principal")
                 .permitAll()
             )
