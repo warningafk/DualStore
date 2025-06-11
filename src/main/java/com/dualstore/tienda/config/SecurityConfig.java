@@ -14,9 +14,35 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    // Configuración exclusiva para el ADMINISTRABLE
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @org.springframework.core.annotation.Order(1)
+    public SecurityFilterChain adminSecurity(HttpSecurity http) throws Exception {
         http
+            .securityMatcher("/admin/**")
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/admin/login", "/admin/css/**", "/admin/js/**", "/admin/img/**").permitAll()
+                .anyRequest().hasRole("ADMIN")
+            )
+            .formLogin(form -> form
+                .loginPage("/admin/login")
+                .defaultSuccessUrl("/admin", true)
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutUrl("/admin/logout")
+                .logoutSuccessUrl("/admin/login?logout")
+            );
+        http.csrf(csrf -> csrf.disable());
+        return http.build();
+    }
+
+    // Configuración exclusiva para el PRINCIPAL (clientes)
+    @Bean
+    @org.springframework.core.annotation.Order(2)
+    public SecurityFilterChain principalSecurity(HttpSecurity http) throws Exception {
+        http
+            .securityMatcher("/principal/**", "/front-principal/**", "/", "/css/**", "/img/**", "/js/**", "/registro")
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/css/**", "/img/**", "/js/**", "/registro", "/", "/principal", "/front-principal/**").permitAll()
                 .anyRequest().authenticated()
@@ -27,7 +53,7 @@ public class SecurityConfig {
                 .permitAll()
             )
             .logout(logout -> logout
-                .logoutSuccessUrl("/principal") // Redirige a principal tras logout
+                .logoutSuccessUrl("/principal")
                 .permitAll()
             );
         http.csrf(csrf -> csrf.disable());
