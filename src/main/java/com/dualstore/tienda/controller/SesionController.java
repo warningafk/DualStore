@@ -18,15 +18,12 @@ public class SesionController {
     public Map<String, String> usuarioActual(Authentication authentication) {
         Map<String, String> response = new HashMap<>();
         if (authentication != null && authentication.isAuthenticated()) {
-            // El principal puede ser UserDetails o String (correo)
-            String correo = authentication.getName();
+            String correo = authentication.getName(); // ahora siempre es el correo
             Usuario usuario = usuarioRepository.findAll().stream()
-                    .filter(u -> u.getCorreo().equalsIgnoreCase(correo) || u.getNombreCompleto().equalsIgnoreCase(correo))
+                    .filter(u -> u.getCorreo().equalsIgnoreCase(correo))
                     .findFirst().orElse(null);
             if (usuario != null) {
                 response.put("nombreCompleto", usuario.getNombreCompleto());
-            } else {
-                response.put("nombreCompleto", correo); // fallback
             }
         }
         return response;
