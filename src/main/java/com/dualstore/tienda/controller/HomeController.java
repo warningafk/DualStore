@@ -120,4 +120,9 @@ public class HomeController {
     public String mostrarAdminLogin() {
         return "admin/login";
     }
+    
+    @GetMapping("/contactanos")
+    public String mostrarContactanos() {
+        return "contactanos/index";
+    }
 }

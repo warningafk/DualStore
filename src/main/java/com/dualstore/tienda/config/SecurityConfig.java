@@ -115,7 +115,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/principal", "/login", "/registro",
                                 "/css/**", "/js/**", "/img/**", "/api/usuario-actual",
-                                "/logout", "/front-principal/**", "/fragments/**", "/debug/**")
+                                "/logout", "/front-principal/**", "/fragments/**", "/debug/**", "/contactanos")
                         .permitAll()
                         .requestMatchers("/dashboard/**").hasRole("CLIENTE") // Ejemplo de ruta protegida para cliente
                         .anyRequest().authenticated())
