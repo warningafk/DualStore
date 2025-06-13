@@ -1,0 +1,50 @@
+/* Fondo limpio y profesional */
+body.clean-bg {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor principal */
+.login-box {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    max-width: 420px;
+    width: 100%;
+}
+
+/* Aplicar radius uniforme */
+.border-radius {
+    border-radius: 5px !important;
+}
+
+/* Inputs */
+.input-group-text {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #495057;
+}
+
+/* Input activo */
+input.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+}
+
+/* Botón mostrar contraseña */
+.toggle-password {
+    border-left: none;
+}
+
+/* Botón ingresar */
+.btn-primary {
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.alert-danger {
+    font-size: 0.9rem;
+    border-radius: 5px;
+}

@@ -68,7 +68,7 @@ public class SecurityConfig {
         return http
                 .securityMatcher("/admin/**") // Solo rutas que empiecen con /admin/
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/login", "/admin/css/**", "/admin/js/**", "/admin/img/**")
+                        .requestMatchers("/admin/login", "/admin/css/**", "/admin/js/**", "/admin/img/**", "/admin/productos/**")
                         .permitAll()
                         .anyRequest().hasRole("ADMIN"))
                 .formLogin(form -> form

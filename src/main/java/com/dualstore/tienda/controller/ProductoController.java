@@ -135,4 +135,10 @@ public class ProductoController {
         productoService.eliminar(id);
         return "redirect:/admin/productos";
     }
+
+    @GetMapping("/api/{id}")
+    @ResponseBody
+    public Producto obtenerProducto(@PathVariable("id") Integer id) {
+        return productoService.buscarId(id).orElse(null);
+    }
 }

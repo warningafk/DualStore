@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --primario: #198754;
+  --secundario: #0d6efd;
+  --fondo: #ffffff;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radius: 5px;
+  --font: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background-color: #f2f4f7;
+  margin: 0;
+  padding: 0;
+}
+
+.cont-form {
+  padding: 2rem 1rem;
+}
+
+.header-box {
+  background-color: var(--secundario);
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+}
+
+.header-box h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.division {
+  background-color: var(--fondo);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #dee2e6;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primario);
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #198754, #20c997);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #157347, #1abc9c);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.main-content {
+  margin-left: 240px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .division {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --primary: #0d6efd;
+  --gray-light: #f8f9fa;
+  --gray-dark: #343a40;
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radius: 5px; /* 🔄 Ligera redondez */
+  --font: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  margin-left: 240px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+.header-section {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: white;
+  padding: 2.5rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-light);
+  text-align: center;
+}
+
+.header-section h2 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.btn-nuevo {
+  background: linear-gradient(135deg, #198754, #20c997);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-nuevo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.3);
+}
+
+.table-header {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  padding: 0.75rem;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.table .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  border-radius: var(--radius);
+  background: none;
+  border: none;
+}
+
+.table .btn i {
+  font-size: 1rem;
+}
+
+.btn-outline-info {
+  color: #0dcaf0;
+}
+
+.btn-outline-warning {
+  color: #ffc107;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+}
+
+.btn-outline-info:hover,
+.btn-outline-warning:hover,
+.btn-outline-danger:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
